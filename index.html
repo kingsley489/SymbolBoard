@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SymbolBoardd</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .aspect-w-16 {
+      position: relative;
+      padding-bottom: 56.25%;
+    }
+    .aspect-w-16 > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body class="bg-white text-black">
+
+  <!-- Hero Section (centered vertically) -->
+  <section class="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold">SymbolBoard</h1>
+      <p class="mt-2 text-lg sm:text-xl text-gray-600">Tap. Copy. Paste. Done.</p>
+      <div class="mt-6 flex justify-center gap-4">
+        <a href="symbolBoard.html" class="inline-flex items-center text-sm text-gray-700 hover:underline">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          </svg>
+          Visit site
+        </a>
+        <a href="#" class="px-4 py-2 rounded bg-black text-white text-sm shadow hover:bg-gray-800 transition">Extension</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section (below hero) -->
+  <section class="pb-20 w-full flex justify-center">
+    <div class="w-full sm:w-[90%] lg:w-[70%] max-w-5xl bg-black rounded-xl overflow-hidden relative" style="aspect-ratio: 16/8;">
+      
+      <!-- Play Button Overlay -->
+      <div id="video-wrapper" class="absolute inset-0 flex items-center justify-center z-10 bg-black">
+        <button id="play-button" class="text-white text-4xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 sm:h-20 sm:w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-6.518-3.894A1 1 0 007 8.106v7.788a1 1 0 001.234.97l6.518-3.894a1 1 0 000-1.732z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- YouTube Embed -->
+      <iframe
+        id="real-video"
+        class="absolute inset-0 w-full h-full hidden"
+        src=""
+        title="SymbolBoardd Demo"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+  </section>
+
+  <!-- Script to load YouTube on play -->
+  <script>
+    const playButton = document.getElementById('play-button');
+    const videoWrapper = document.getElementById('video-wrapper');
+    const realVideo = document.getElementById('real-video');
+
+    playButton.addEventListener('click', () => {
+      realVideo.src = "https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1";
+      realVideo.classList.remove('hidden');
+      videoWrapper.remove();
+    });
+  </script>
+</body>
+</html>
